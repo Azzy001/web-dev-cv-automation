@@ -1,48 +1,9 @@
-name: Simple CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
+name: CI/CD Pipeline
+on: push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      # Example of installing dependencies (if applicable)
-      # - name: Install dependencies
-      #   run: |
-      #     npm install
-
-      - name: Build project
-        run: |
-          echo "Build your project here"
-          # Replace with actual build commands if needed
-          # npm run build, etc.
-
-      - name: Run tests
-        run: |
-          echo "Run your tests here"
-          # Replace with actual test commands if needed
-          # npm test, pytest, etc.
-
-      - name: Start project
-        run: |
-          echo "Start your project here"
-          # Replace with actual start commands if needed
-          # npm start, python app.py, etc.
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Adjust this path if needed
+    deploy_app:
+        runs-on: ubuntu-latest
+        steps:
+            - name: greetings:
+              run: echo "Hello World"
