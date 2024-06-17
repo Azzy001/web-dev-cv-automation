@@ -51,7 +51,7 @@ jobs:
     steps:
       # Step 1: Check out the repository's code (again, fresh checkout)
       - name: Checkout code
-        uses: actions/checkout@v16
+        uses: actions/checkout@v2
 
       # Step 2: Deploy the application to GitHub Pages
       - name: Deploy to GitHub Pages
