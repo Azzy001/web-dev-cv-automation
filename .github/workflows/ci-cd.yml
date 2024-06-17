@@ -17,11 +17,13 @@ jobs:
     steps:
       # Step 1: Check out the repository's code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v16
 
       # Step 2: Set up Node.js environment
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v16
+        with:
+          node-version: '20'
 
       # Step 3: Install project dependencies using npm
       - name: Install dependencies
@@ -49,7 +51,7 @@ jobs:
     steps:
       # Step 1: Check out the repository's code (again, fresh checkout)
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v16
 
       # Step 2: Deploy the application to GitHub Pages
       - name: Deploy to GitHub Pages
