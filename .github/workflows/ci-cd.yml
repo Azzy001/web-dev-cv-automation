@@ -28,12 +28,17 @@ jobs:
       # Step 3: Install project dependencies using npm
       - name: Install dependencies
         run: npm install
-        working-directory: ./your-app-directory
+        working-directory: ./
 
       # Step 4: Run tests using npm
       - name: Run tests
         run: npm test
-        working-directory: ./your-app-directory
+        working-directory: ./
+
+      # step 5: build project
+      - name: Build project
+        run: npm run build
+        working-directory: ./
 
   # The deploy job, which runs after the build job
   deploy:
