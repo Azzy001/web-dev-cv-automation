@@ -7,3 +7,13 @@ jobs:
         steps:
            - name: greetings
              run: echo "Hello World"
+
+    deploy_app2:
+        runs-on: ubuntu-latest
+        steps:
+          - name: second-greetings
+            run: echo "second greeting"
+          - name: show-current-path
+            run: pwd |
+                 echo "third command has been successful!"
+            
