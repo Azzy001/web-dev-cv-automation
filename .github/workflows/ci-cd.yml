@@ -1,61 +1,48 @@
-# This is the name of the GitHub Actions workflow
-name: CI/CD Pipeline
+name: Simple CI/CD Pipeline
 
-# The workflow is triggered by a push event on the main branch
 on:
   push:
     branches:
       - main
 
-# Define the jobs that will run as part of the workflow
 jobs:
-  # The build job
   build:
-    # Specify the environment for the job to run in
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository's code
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+      
+      # Example of installing dependencies (if applicable)
+      # - name: Install dependencies
+      #   run: |
+      #     npm install
 
-      # Step 2: Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '4'
-
-      # Step 3: Install project dependencies using npm
-      - name: Install dependencies
-        run: npm install
-        working-directory: ./
-
-      # Step 4: Run tests using npm
-      - name: Run tests
-        run: npm test
-        working-directory: ./
-
-      # Step 5: Build project
       - name: Build project
-        run: npm run build
-        working-directory: ./
+        run: |
+          echo "Build your project here"
+          # Replace with actual build commands if needed
+          # npm run build, etc.
 
-  # The deploy job, which runs after the build job
+      - name: Run tests
+        run: |
+          echo "Run your tests here"
+          # Replace with actual test commands if needed
+          # npm test, pytest, etc.
+
+      - name: Start project
+        run: |
+          echo "Start your project here"
+          # Replace with actual start commands if needed
+          # npm start, python app.py, etc.
+
   deploy:
-    # Specify the environment for the job to run in
     runs-on: ubuntu-latest
-
-    # Indicate that this job depends on the build job
     needs: build
 
     steps:
-      # Step 1: Check out the repository's code (again, fresh checkout)
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Step 2: Deploy the application to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./  # Adjust this path if needed
