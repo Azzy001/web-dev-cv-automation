@@ -1,11 +1,1 @@
-{
-    "name": "web-dev-cv-automation",
-    "version": "1.0.0",
-    "description": "Your project description",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "AMA",
-    "license": "MIT"
-  }
-  
+
