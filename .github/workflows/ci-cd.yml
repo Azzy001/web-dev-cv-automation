@@ -1,12 +1,34 @@
 name: CI/CD Pipeline
-on: pull_request
+
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
-    deploy_app:
-        runs-on: ubuntu-latest
-        steps:
-           - name: greetings
-             run: echo "Hello World"
-             uses: action/checkout@v2
-             run: echo "checkout successful."
-
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Code analysis
+        run: npm run lint  # Example linting step
+      
+  deploy_to_staging:
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    steps:
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment..."
+          # Add deployment commands here
